@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Inclinado</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+<body onload="canvass()">
+<div class="container-fluid">
+
+    <header class="row centrar">
+        <h2><pre>P L A N O    I N C L I N A D O.</pre></h2>
+    </header>
+
+    <!-- PESTAÑAS -->
+    <nav class="row">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="#active"><a href="#Concepto de Plazo Fijo" aria-controls="Concepto de Plazo Fijo" role="tab" data-toggle="tab">Concepto de Plazo Fijo</a></li>
+            <li role="presentation"><a href="#ejemplo" aria-controls="ejemplo" role="tab" data-toggle="tab">Ejemplo</a></li>
+            <li role="presentation"><a href="#conceptos" aria-controls="conceptos" role="tab" data-toggle="tab">Conceptos</a></li>
+            <li role="presentation"><a href="#conversion" aria-controls="conversion" role="tab" data-toggle="tab">Conversor de unidades</a></li>
+        </ul>
+    </nav>
+
+    <div class="row">
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="calculo">
+
+
+                <div class="row margin-top">
+                    <div class="col-md-6">
+                        <ul class="sin-item font-size">
+                            <li>Figura</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6">
+                        <input class="form-control" id="select-figura" type="text" placeholder="Triángulo" disabled>
+                    </div>
+                </div>
+
+
+                <div class="row margin-top2">
+
+                    <div class="col-md-6">
+                        <ul class="sin-item font-size">
+                            <li>*Peso de la figura</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" name="Ingrese Dato" id="input-peso-figura">
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" id="select-peso" type="text" placeholder="Kilogramos" disabled>
+                    </div>
+
+
+                </div>
+
+                <div class="row margin-top2">
+                    <div class="col-md-6">
+                        <ul class="sin-item font-size">
+                            <li>*Ángulo de la rampa</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" name="Ingrese Dato" id="input-angulo">
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" id="grados" type="text" placeholder="Grados" disabled>
+                    </div>
+
+
+                </div>
+
+                <div class="row margin-top2">
+                    <div class="col-md-6">
+                        <ul class="sin-item font-size">
+                            <il>*Distancia de la hipotenusa de la rampa</il>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" name="Ingrese Dato" id="input-distancia">
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" id="select-distancia" type="text" placeholder="Metros" disabled>
+                    </div>
+                </div>
+
+                <div class="row margin-top2">
+                    <div class="col-md-6">
+                        <ul class="sin-item font-size">
+                            <il>*Tiempo de bajada</il>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" name="Ingrese Dato" id="input-tiempo">
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="Segundos" disabled>
+                    </div>
+                </div>
+
+                <div class="row margin-top">
+                    <div class="col-md-6">
+                        <ul class="sin-item rojo">
+                            <li><b>*Campos obligatorios</b></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row margin-top">
+                    <div class="col-md-12">
+                        <img src="img/separador.png" alt="separador">
+                    </div>
+                </div>
+
+                <div class="row margin-top">
+
+                    <div class="col-md-offset-6 col-md-6">
+                        <select class="form-control" name="Calculos" id="select-calculos">
+                            <option value="1">Coeficiente de fricción entre la figura y el plano</option>
+                            <option value="2">Fuerza de fricción que actua sobre la figura</option>
+                            <option value="3">Rapidéz del bloque despues de que se ha desplazado la distancia</option>
+
+                        </select>
+                    </div>
+
+
+                </div>
+
+                <div class="row margin-top2">
+                    <div class="col-md-3">
+                        <ul class="sin-item font-size">
+                            <button type="button" class="btn btn-success btn-primary  btn-md btn-block"  id="bcalcular" onclick="calcular()">Calcular</button>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-offset-3 col-md-6">
+                        <input class="form-control" id="resultado" type="text" placeholder="Resultado" disabled>
+                    </div>
+
+
+                </div>
+
+                <div class="row margin-top4">
+                    <div class="col-md-offset-4 col-md-7">
+                        <canvas id="miCanvas" width="700" height="700" style="border: 1px solid white;">
+                            Tu navegador no puede mostrar este contenido.
+                        </canvas>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div role="tabpanel" class="tab-pane" id="ejemplo">
+                <div class="row margin-top">
+                    <div class="col-md-12">
+                        <p>Un bloque de 3Kg. parte del reposo en la parte superior de una pendiente de 30°, y se desliza 2 metros hacia abajo en 1,5s. Encuentre:</p>
+                        <ul class="sin-item">
+                            <li>A)La magnitud de la aceleración del bloque.</li>
+                            <li>B)El coeficiente de fricción cinética entre el bloque y el plano</li>
+                            <li>C)La fuerza de fricción que actúa sobre el bloque </li>
+                            <li>D)La rapidez del bloque después de que se ha deslizado 2 metros</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="row margin-top">
+                    <div class="col-md-6">
+                        <img src="img/dos.jpg" alt="ejemplo2">
+                    </div>
+
+                    <div class="col-md-offset-2 col-md-4">
+                        <img src="img/tres.jpg" alt="ejemplo3">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- Pestaña Conceptos -->
+            <div role="tabpanel" class="tab-pane" id="conceptos">
+
+                <div class="row margin-top">
+                    <div class="col-md-12">
+                        <h1>Plano inclinado</h1>
+                    </div>
+
+                </div>
+
+                <div class="row margin-top2">
+                    <div class="col-md-9">
+                        <p>El <b>plano inclinado</b> es una máquina simple que consiste en una superficie plana que forma un ángulo agudo con el suelo y se utiliza para elevar cuerpos a cierta altura.</p>
+                        <p>Tiene la ventaja de necesitarse una fuerza menor que la que se emplea si levantamos dicho cuerpo verticalmente, aunque a costa de aumentar la distancia recorrida y vencer la fuerza de rozamiento.</p>
+                        <p>Para analizar las fuerzas existentes sobre un cuerpo situado sobre un plano inclinado, hay que tener en cuenta la existencia de varios orígenes en las mismas.</p>
+                        <ul>
+                            <li>En primer lugar se debe considerar la existencia de una fuerza de gravedad, también conocida como peso, que es consecuencia de la masa (<b>M</b>) que posee el cuerpo apoyado en el plano inclinado y tiene una magnitud de M.g con una dirección vertical y representada en la figura por la letra <b>G</b>.</li>
+                            <li>Existe además una fuerza normal (<b>N</b>), también conocida como la fuerza de reacción ejercida sobre el cuerpo por el plano como consecuencia de la tercera ley de Newton, se encuentra en una dirección perpendicular al plano y tiene una magnitud igual a la fuerza ejercida por el plano sobre el cuerpo. En la figura aparece representada por N y tiene la misma magnitud que <b>F<sub>2</sub></b>= M.g.cosα y sentido opuesto a la misma.</li>
+                            <li>Existe finalmente una fuerza de rozamiento, también conocida como fuerza de fricción (<b>F<sub>R</sub></b>), que siempre se opone al sentido del movimiento del cuerpo respecto a la superficie, su magnitud depende tanto del peso como de las características superficiales del plano inclinado y la superficie en contacto del cuerpo que proporcionan un coeficiente de rozamiento. Esta fuerza debe tener un valor igual a <b>F<sub>1</sub></b>=M.g.senα para que el cuerpo se mantenga en equilibrio. En el caso en que F<sub>1</sub> fuese mayor que la fuerza de rozamiento el cuerpo se deslizaría hacia abajo por el plano inclinado. Por tanto para subir el cuerpo se debe realizar una fuerza con una magnitud que iguale o supere la suma de F<sub>1</sub> + F<sub>R</sub>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-2">
+                        <img src="img/planoinclinado.svg.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Pestaña Conversor de unidades -->
+            <div role="tabpanel" class="tab-pane" id="conversion">
+
+                <div class="row margin-top2">
+                    <div class="col-md-2">
+                        <ul class="sin-item font-size">
+                            <li>Peso</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" name="Ingrese Dato" id="input-pesoconversion">
+                    </div>
+
+                    <div class="col-md-3">
+                        <ul class="sin-item">
+                            <select class="form-control" name="Calculos" id="select-conversionpeso">
+                                <option value="4">Gramos</option>
+                                <option value="5">Toneladas</option>
+                            </select>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" id="resultado-conversionpeso" type="text" placeholder="Kilogramos" disabled>
+                    </div>
+                </div>
+
+
+                <div class="row margin-top2">
+                    <div class="col-md-2">
+                        <ul class="sin-item font-size">
+                            <li>Distancia</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" name="Ingrese Dato" id="input-distanciaconversion">
+                    </div>
+
+                    <div class="col-md-3">
+                        <ul class="sin-item">
+                            <select class="form-control" name="Calculos" id="select-conversiondistancia">
+                                <option value="6">Centimetros</option>
+                                <option value="7">Kilometros</option>
+                            </select>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" id="resultado-conversiondistancia" type="text" placeholder="Metros" disabled>
+                    </div>
+                </div>
+
+
+                <div class="row margin-top2">
+                    <div class="col-md-2">
+                        <ul class="sin-item font-size">
+                            <li>Tiempo</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" name="Ingrese Dato" id="input-tiempoconversion">
+                    </div>
+
+                    <div class="col-md-3">
+                        <ul class="sin-item">
+                            <select class="form-control" name="Calculos" id="select-conversiontiempo">
+                                <option value="8">Minutos</option>
+                                <option value="9">Horas</option>
+                            </select>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="form-control" id="resultado-conversiontiempo" type="text" placeholder="Segundos" disabled>
+                    </div>
+                </div>
+                <div class="row margin-top3">
+                    <div class="col-md-offset-4 col-md-3">
+                        <button type="button" class="btn btn-success btn-primary  btn-md btn-block"  id="cucalcular" onclick="calcular2()">Calcular</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script><!--primero se añade jquery despues bootstrap-->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/formularios.js"></script> <!-- Validacion de formularios -->
+    <script type="text/javascript" src="js/CanvasyCalculos.js"></script>
+
+</body>
+</html>
