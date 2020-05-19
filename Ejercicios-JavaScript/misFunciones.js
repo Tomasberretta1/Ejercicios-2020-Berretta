@@ -117,10 +117,10 @@ function CargarWeb() {
 function CargarResultado() {
     var urlComp, can, un;
 
-    urlComp = window.location.href.split(separator: "/")[5];
+    urlComp = window.location.href.split("/")[5];
 
-    can = urlComp.split(separator: "#")[1];
-    un = urlComp.split(separator: "#")[2];
+    can = urlComp.split("#")[1];
+    un = urlComp.split("#")[2];
 
-    document.getElementsByName("dist").value = can + " " + un;
+    document.getElementById("dist").value = can + " " + un;
 }
