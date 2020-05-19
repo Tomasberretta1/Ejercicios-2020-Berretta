@@ -44,13 +44,12 @@ function CambiarUnidades(id, valor) {
         pulgada = 36 * valor;
         pie = 3 * valor;
     }
-
     document.lasUnidades.unid_metro.value = Math.round(metro*100)/100;
     document.lasUnidades.unid_pulgada.value = Math.round(pulgada*100)/100;
     document.lasUnidades.unid_pie.value = Math.round(pie*100)/100;
     document.lasUnidades.unid_yarda.value = Math.round(yarda*100)/100;
-
 }
+
 
 function ConvertirGR(id) {
     var grad, rad;
@@ -64,8 +63,8 @@ function ConvertirGR(id) {
     }
     document.getElementById("grados").value = grad;
     document.getElementById("radianes").value = rad;
-
 }
+
 
 function mostrar_ocultar(valorMo) {
     if (valorMo=="val_mostrar") {
@@ -74,6 +73,7 @@ function mostrar_ocultar(valorMo) {
         document.getElementById("divMo").style.display = 'none';
     }
 }
+
 
 function calcularSuma() {
     var num1,num2;
@@ -102,4 +102,25 @@ function calcularDiv() {
     num1=document.getElementsByName("div_num1")[0].value;
     num2=document.getElementsByName("div_num2")[0].value;
     document.getElementsByName("div_total")[0].innerHTML= Number(num1) / Number(num2);
+}
+
+function CargarWeb() {
+    var cant, unidad, urlComp;
+
+    cant = document.getElementById("distancia").value;
+    unidad = document.getElementsByName("unidades")[0].value;
+
+    urlComp = "segundaWeb.html#" + cant + "#" + unidad;
+    window.open(urlComp);
+}
+
+function CargarResultado() {
+    var urlComp, can, un;
+
+    urlComp = window.location.href.split(separator: "/")[5];
+
+    can = urlComp.split(separator: "#")[1];
+    un = urlComp.split(separator: "#")[2];
+
+    document.getElementsByName("dist").value = can + " " + un;
 }
